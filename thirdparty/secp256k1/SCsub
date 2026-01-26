@@ -1,0 +1,24 @@
+# SCsub for libsecp256k1
+
+Import('env')
+
+env_secp = env.Clone()
+
+# Configurações básicas para a libsecp256k1 (minimalista para Nostr)
+env_secp.Append(CPPDEFINES=[
+    'ENABLE_MODULE_SCHNORRSIG',
+    'ENABLE_MODULE_EXTRAKEYS',
+    'USE_NUM_NONE',
+    'USE_FIELD_10X26',
+    'USE_SCALAR_8X32',
+    'USE_ENDOMORPHISM',
+])
+
+# Aqui adicionaríamos os fontes da biblioteca real. 
+# Como estamos montando o engine, vou preparar o esqueleto para inclusão.
+sources = [
+    # "src/secp256k1.c",
+]
+
+# Por enquanto, garantimos que o diretório de include esteja disponível
+env.Append(CPPPATH=["#thirdparty/secp256k1/include"])

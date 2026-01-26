@@ -1,0 +1,47 @@
+name: 🧛 Vlad Build & Installer
+
+on:
+  push:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+env:
+  SCONS_FLAGS: >-
+    optimize=size
+    use_lto=yes
+    debug_symbols=no
+    module_text_server_fb_enabled=yes
+
+jobs:
+  build-and-package:
+    runs-on: windows-latest
+    
+    steps:
+      - name: Checkout Vlad Engine
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup Python and SCons
+        uses: ./.github/actions/godot-deps
+
+      - name: Start Compilation (High Speed Cloud Build)
+        run: |
+          cd godot-master/godot-master
+          scons platform=windows target=editor -j4 ${{ env.SCONS_FLAGS }}
+
+      - name: Verify Binary Existence
+        run: |
+          ls godot-master/godot-master/bin/vlad.windows.editor.x86_64.exe
+
+      - name: Compile Inno Setup Installer
+        uses: AyushG3112/innosetup-action@v1
+        with:
+          filepath: vlad_installer.iss
+
+      - name: Upload Vlad Engine Installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: VladEngine-Installer
+          path: installer_output/VladEngine_Setup.exe
+          if-no-files-found: error

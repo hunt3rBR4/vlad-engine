@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://vlad_nostr_chat"]
+
+[node name="NostrChat" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" id="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Log" type="RichTextLabel" id="2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+bbcode_enabled = true
+text = "[b][ SYSTEM ][/b] CONNECTING TO NOSTR NETWORK..."
+
+[node name="HBox" type="HBoxContainer" id="3"]
+layout_mode = 2
+
+[node name="MessageInput" type="LineEdit" id="4"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "> BROADCAST_TO_THE_VOICE_OF_THE_PEOPLE..."
+
+[node name="SendButton" type="Button" id="5"]
+layout_mode = 2
+text = "SEND_EVENT"
+
+[node name="ZapButton" type="Button" id="7"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0, 1)
+text = "ZAP_PLAYER"
+
+[node name="VoiceButton" type="Button" id="6"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "VOICE_E2EE"

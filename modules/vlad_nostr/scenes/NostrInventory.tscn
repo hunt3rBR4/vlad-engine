@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://vlad_nostr_inventory"]
+
+[node name="NostrInventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" id="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" id="2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Header" type="Label" id="3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "SOVEREIGN_ASSET_VAULT // NIP-94"
+horizontal_alignment = 1
+
+[node name="AssetList" type="ItemList" id="4"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_font_sizes/font_size = 14
+item_count = 1
+item_0/text = "LOADING_DECENTRALIZED_ASSETS..."
+
+[node name="HBox" type="HBoxContainer" id="5"]
+layout_mode = 2
+alignment = 1
+
+[node name="DownloadButton" type="Button" id="6"]
+layout_mode = 2
+text = "FETCH_FROM_RELAY"
+
+[node name="VerifyButton" type="Button" id="7"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0.5, 1)
+text = "VERIFY_SHA256"

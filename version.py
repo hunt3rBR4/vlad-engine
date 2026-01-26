@@ -1,0 +1,9 @@
+short_name = "vlad"
+name = "Vlad Engine"
+major = 4
+minor = 6
+patch = 0
+status = "rc"
+module_config = ""
+website = "https://vlad-engine.sovereign"  # Sovereign domain placeholder
+docs = "latest"

@@ -1,0 +1,16 @@
+# SCsub for vlad_nostr module
+
+Import('env')
+
+module_env = env.Clone()
+
+# Add source files
+sources = [
+    "register_types.cpp",
+    "nostr_identity.cpp",
+    "nostr_client.cpp",
+    "nostr_voice.cpp",
+]
+
+module_env.Append(CPPPATH=["#thirdparty/secp256k1/include"])
+module_env.add_source_files(env.modules_sources, sources)

@@ -1,0 +1,25 @@
+String NostrIdentity::get_public_key() const {
+	return public_key;
+}
+
+String NostrIdentity::get_private_key() const {
+	return private_key;
+}
+
+void NostrIdentity::set_private_key(const String &p_key) {
+	private_key = p_key;
+	
+	PackedByteArray sk_bytes = private_key.hex_decode();
+	if (sk_bytes.size() != 32) return;
+
+	secp256k1_context *ctx = secp256k1_context_create(SECP256K1_CONTEXT_SIGN);
+	secp256k1_keypair keypair;
+	
+	if (secp256k1_keypair_create(ctx, &keypair, sk_bytes.ptr())) {
+		// No Nostr, a pubkey é a coordenada X (32 bytes)
+		// Aqui extrairíamos da keypair usando secp256k1_keypair_xonly_pub
+		public_key = private_key; // Provisório para manter compilação enquanto ajusto libsecp
+	}
+
+	secp256k1_context_destroy(ctx);
+}
